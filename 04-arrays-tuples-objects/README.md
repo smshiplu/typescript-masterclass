@@ -107,50 +107,20 @@ Make Product.id readonly. Try assigning a new id after creation and observe the 
 ```ts
 {
   type Product = {
-    id: number,
-    name: string,
-    price: number,
-    category: string,
-    tags: string[]
+   readonly id: number,
+    name: string
   }
 
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "laptop",
-      price: 100000,
-      category: "electronics",
-      tags: ["computer", "gadgets", "electronics", "device"]
-    },
-    {
-      id: 2,
-      name: "keyboard",
-      price: 5000,
-      category: "electronics",
-      tags: ["computer", "gadgets", "electronics", "device"]
-    },
-    {
-      id: 3,
-      name: "mouse",
-      price: 2000,
-      category: "electronics",
-      tags: ["computer", "gadgets", "electronics", "device"]
-    },
-    {
-      id: 4,
-      name: "smart phone",
-      price: 20000,
-      category: "electronics",
-      tags: ["computer", "gadgets", "electronics", "device"]
-    },
-    {
-      id: 5,
-      name: "smart tv",
-      price: 100000,
-      category: "electronics",
-      tags: ["computer", "gadgets", "electronics", "device"]
+  const product: Product = {id: 1, name: "laptop"}
+
+  // product.id = 10 // it's not allowed because of readonly property
+
+
+  function printProduct(product: readonly Product[]) {
+    if(product[0]) {
+      // product[0].id = 10 // Cannot assign to 'id' because it is a read-only property.
     }
-  ]
+  } 
 }
 ```
 
